@@ -16,5 +16,16 @@ namespace Snake
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
         }
+        // Конструктор
+        public Point(int _x, int _y, char _sym)
+        {
+            x = _x;
+            y = _y;
+            sym = _sym;
+        }
+        // Конструктор по умолч
+        public Point ()
+        {            
+        }
     }
 }
