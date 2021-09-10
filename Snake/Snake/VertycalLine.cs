@@ -6,28 +6,21 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class VertycalLine
+    class VertycalLine : Figure // класс наследуется от фигуры
     {
-        List<Point> pList; // поле
         /// <summary>
         ///  класс вертикальная линия
         /// </summary>
-        public VertycalLine(int yTop, int yBotom, int x, char sym)
+        public VertycalLine(int yUp, int yDown, int x, char sym)
         {
             pList = new List<Point>();
-            for (int y = yTop; y <= yBotom; y++)
+            for (int y = yUp; y <= yDown; y++)
             {
                 Point p = new Point(x, y, sym);
                 pList.Add(p);
             }
         }
 
-        public void Draw()
-        {
-            foreach (Point p in pList)
-            {
-                p.Draw();
-            }
-        }
+
     }
 }

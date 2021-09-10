@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class HoryzontLine
+    class HoryzontLine : Figure
     {
-        List<Point> pList; // поле
-
         /// <summary>
         ///  класс горизонтальная линия
         /// </summary>
@@ -22,13 +20,5 @@ namespace Snake
                 pList.Add(p);
             }
         }
-        public void Draw ()
-        {
-            foreach(Point p in pList)
-            {
-                p.Draw();
-            }
-        }
-
     }
 }

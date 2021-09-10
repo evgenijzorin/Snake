@@ -8,6 +8,7 @@ namespace Snake
 {
     class Point
     {
+        // инкапсуляция - свойство системы объединить данные и методы реализации какой либо сущьности в классе и скрыть их от пользователя
         public int x;
         public int y;
         public char sym;
