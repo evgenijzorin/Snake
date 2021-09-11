@@ -55,6 +55,10 @@ namespace Snake
             }
         }
 
-
+        internal void Clear()
+        {
+            sym = ' ';
+            Draw(); // вызвать метод внутри класса с текущим экземпляром
+        }
     }
 }

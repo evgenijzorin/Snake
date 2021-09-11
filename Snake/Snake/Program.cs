@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading; // Thread
 
 namespace Snake
 {
@@ -23,9 +24,10 @@ namespace Snake
             Point p1 = new Point(1, 3, '*');
             // p1.Draw(); // вызов метода
             Snake snake = new Snake(p1, 4, Direction.Right);
+
             snake.Draw();
-
-
+            snake.Move();
+            Thread.Sleep(300); // Задержка на 300 милисекунд
             Console.ReadLine();
         }   
     }

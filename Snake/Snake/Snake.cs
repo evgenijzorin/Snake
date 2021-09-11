@@ -8,15 +8,16 @@ namespace Snake
 {
     class Snake : Figure
     {
-
+        Direction direction;
         /// <summary>
         /// класс змейка
         /// </summary>
         /// <param name="tail">Положение хвоста</param>
         /// <param name="length">Длина змейки</param>
         /// <param name="direction">Направление змейки</param>
-        public Snake (Point tail, int length, Direction direction)
+        public Snake (Point tail, int length, Direction _direction)
         {
+            direction = _direction;
             pList = new List<Point>(); // Создаем новый экземпляр списка точек
             for (int i = 0; i < length; i++)
             {
@@ -27,5 +28,22 @@ namespace Snake
 
         }
 
+        internal void Move() // internal - внутренний, модификатор доступа только внутри класса
+        {
+            Point tail = pList.First(); // хвост змейки - возвратить первый элемент списка
+            pList.Remove(tail); // Удалить хвостовую точку змейки
+            Point head = GetNextPoint();
+            pList.Add(head);
+            tail.Clear();
+            head.Draw();
+        }
+
+        private Point GetNextPoint()
+        {
+            Point head = pList.Last(); // последняя точка списка - голова змейки
+            Point nextPoint = new Point(head);
+            nextPoint.Move(1, direction);
+            return nextPoint;
+        }
     }
 }
