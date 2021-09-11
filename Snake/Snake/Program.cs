@@ -21,13 +21,25 @@ namespace Snake
             rightLine.Draw();
             leftLine.Draw();
 
+            // Создание базовой точки
             Point p1 = new Point(1, 3, '*');
-            // p1.Draw(); // вызов метода
+            // Создание змейки
             Snake snake = new Snake(p1, 4, Direction.Right);
-
             snake.Draw();
-            snake.Move();
-            Thread.Sleep(300); // Задержка на 300 милисекунд
+
+            while(true)
+            {
+                if (Console.KeyAvailable)//Значение true, если нажатие клавиши доступно; в противном случае — значение false.
+                {
+                    ConsoleKeyInfo // Описывает нажатую клавишу консоли, включая символ, представленный этой клавишей, и                    состояние управляющих клавиш                       
+                        key = 
+                        Console.ReadKey();                         
+                    snake.HandlyKey(key.Key); // дать команду змейке
+                }
+                Thread.Sleep(300); // Задержка на 300 милисекунд
+                snake.Move();
+            }        
+            
             Console.ReadLine();
         }   
     }
