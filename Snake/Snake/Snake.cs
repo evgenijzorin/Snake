@@ -38,6 +38,17 @@ namespace Snake
             head.Draw();
         }
 
+        internal bool IsHitSnakeTail(Snake snake)
+        {
+            Point head = pList.Last();
+            for (int i = 0; i < pList.Count-2; i++)
+            {
+                if (head.IsHit(pList[i]))
+                    return true;
+            }
+            return false; 
+        }
+
         private Point GetNextPoint()
         {
             Point head = pList.Last(); // последняя точка списка - голова змейки
@@ -59,7 +70,6 @@ namespace Snake
             {
                 return false;
             }
-
         }
 
         public void HandlyKey(ConsoleKey key)

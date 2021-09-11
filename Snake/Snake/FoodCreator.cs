@@ -24,8 +24,8 @@ namespace Snake
 
         internal Point CreateFood()
         {
-            int x = random.Next(2, mapWidth - 2);
-            int y = random.Next(2, mapHight - 2);
+            int x = random.Next(3, mapWidth - 3);
+            int y = random.Next(3, mapHight - 3);
             return new Point(x, y, sym);
         }
     }

@@ -8,18 +8,15 @@ namespace Snake
     {
         static void Main(string[] args)
         {
+            int mapWidth = 80;
+            int mapHight = 25;
             Console.SetWindowSize(80, 25); // размер окна
             Console.SetBufferSize(80, 25); // Устанавливает заданные значения высоты и ширины буферной области экрана.
 
-            // границы игровой зоны
-            HoryzontLine upLine = new HoryzontLine(0,78,0, '+');
-            HoryzontLine downLine = new HoryzontLine(0, 78, 24, '+');
-            VertycalLine rightLine = new VertycalLine(0, 24, 78, '+');
-            VertycalLine leftLine = new VertycalLine(0, 24, 0, '+');
-            upLine.Draw();
-            downLine.Draw();
-            rightLine.Draw();
-            leftLine.Draw();
+
+            // Стены
+            Walls walls = new Walls(mapWidth, mapHight);
+            walls.Draw();
 
             // Создание базовой точки
             Point p1 = new Point(1, 3, '*');
@@ -32,21 +29,20 @@ namespace Snake
             Point food = foodCreator.CreateFood();
             food.Draw();
 
-
-
-
             while(true)
             {
+                // проверка пересечения препятствия
+                
+                if (walls.IsHit(snake) || snake.IsHitSnakeTail(snake))
+                    break;
                 // Процесс поглощения пищи
-                if (snake.Eat(food))
+                if 
+                    (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
                     food.Draw();
                 }
-                //else
-                //{
-                //}      
-
+                
                 if (Console.KeyAvailable)//Значение true, если нажатие клавиши доступно 
                 {
                     ConsoleKeyInfo key = Console.ReadKey();                         
@@ -54,9 +50,7 @@ namespace Snake
                 }
                 Thread.Sleep(300); // Задержка на 300 милисекунд
                 snake.Move();
-            }        
-            
-            Console.ReadLine();
+            }   
         }   
     }
 }

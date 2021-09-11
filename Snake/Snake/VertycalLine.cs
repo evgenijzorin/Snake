@@ -20,6 +20,17 @@ namespace Snake
                 pList.Add(p);
             }
         }
+        /// <summary>
+        /// Переопределение метода Draw
+        /// </summary>
+        public override void Draw()
+        {
+            foreach (Point p in pList)
+            {
+                p.sym = '+';
+                p.Draw();
+            }
+        }
 
 
     }
