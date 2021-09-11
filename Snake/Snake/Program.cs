@@ -27,13 +27,29 @@ namespace Snake
             Snake snake = new Snake(p1, 4, Direction.Right);
             snake.Draw();
 
+            // Создание еды
+            FoodCreator foodCreator = new FoodCreator(80,25,'$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
+
+
+
             while(true)
             {
-                if (Console.KeyAvailable)//Значение true, если нажатие клавиши доступно; в противном случае — значение false.
+                // Процесс поглощения пищи
+                if (snake.Eat(food))
                 {
-                    ConsoleKeyInfo // Описывает нажатую клавишу консоли, включая символ, представленный этой клавишей, и                    состояние управляющих клавиш                       
-                        key = 
-                        Console.ReadKey();                         
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                //else
+                //{
+                //}      
+
+                if (Console.KeyAvailable)//Значение true, если нажатие клавиши доступно 
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();                         
                     snake.HandlyKey(key.Key); // дать команду змейке
                 }
                 Thread.Sleep(300); // Задержка на 300 милисекунд

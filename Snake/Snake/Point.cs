@@ -60,5 +60,10 @@ namespace Snake
             sym = ' ';
             Draw(); // вызвать метод внутри класса с текущим экземпляром
         }
+
+        internal bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
+        }
     }
 }
