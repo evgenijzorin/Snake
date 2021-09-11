@@ -24,9 +24,37 @@ namespace Snake
             y = _y;
             sym = _sym;
         }
+        // Конструктор задания точки с помощью другой точки
+        public Point(Point p)
+        {
+            x = p.x;
+            y = p.y;
+            sym = p.sym;
+        }
         // Конструктор по умолч
         public Point ()
         {            
         }
+        public void Move(int offset, Direction direction) // offset - смещение
+        {
+            if (direction == Direction.Left)
+            {
+                x = x - offset;
+            }
+            else if (direction == Direction.Right)
+            {
+                x = x + offset;
+            }
+            else if (direction == Direction.Up)
+            {
+                y = y + offset;
+            }
+            else if (direction == Direction.Down)
+            {
+                y = y - offset;
+            }
+        }
+
+
     }
 }

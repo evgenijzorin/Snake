@@ -21,9 +21,9 @@ namespace Snake
             leftLine.Draw();
 
             Point p1 = new Point(1, 3, '*');
-            p1.Draw(); // вызов метода
-
-
+            // p1.Draw(); // вызов метода
+            Snake snake = new Snake(p1, 4, Direction.Right);
+            snake.Draw();
 
 
             Console.ReadLine();
